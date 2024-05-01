@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// Base class for games
+// Abstraction for game object
 class Game {
 public:
     Game(const string& g, const string& n, int size, const string& sizeType)
@@ -55,6 +55,7 @@ protected:
     string sizeType;
 };
 
+// function to save users library to the AD(active directory)
 void saveLibraryToFile(const vector<Game*>& gamesLibrary) {
     ofstream outputFile("C++GameLib.txt"); // Open a file named "C++GameLib.txt" for writing
     if (outputFile.is_open()) { // Check if the file is successfully opened
@@ -72,6 +73,7 @@ void saveLibraryToFile(const vector<Game*>& gamesLibrary) {
     }
 }
 
+// function to load library from the AD(active directory)
 void loadLibraryFromFile(vector<Game*>& gamesLibrary) {
     ifstream file("C++GameLib.txt"); // Open the file
     if (file.is_open()) {
@@ -118,7 +120,7 @@ void displaySizeType() {
     cout << "2. GB (Gigabytes)" << endl;
 }
 
-// Function to display genre options
+// Function to display all genre options
 void displayGenres() {
     cout << "Genres:" << endl;
     cout << "1. Action" << endl;
@@ -231,6 +233,7 @@ void addGame(vector<Game*>& gamesLibrary) {
     }
 }
 
+// function to edit game entries from the users library
 void editGameEntry(vector<Game*>& gamesLibrary) {
     if (gamesLibrary.empty()) {
         cout << "Your game library is currently empty. There are no games to edit." << endl;
@@ -288,12 +291,33 @@ void editGameEntry(vector<Game*>& gamesLibrary) {
 
                 string newGenre;
                 switch (genreChoice) {
-                    // Handle genre choices as before
+                    case 1: newGenre = "Action"; break;
+                    case 2: newGenre = "Adventure"; break;
+                    case 3: newGenre = "Role-playing (RPG)"; break;
+                    case 4: newGenre = "Shooter"; break;
+                    case 5: newGenre = "Strategy"; break;
+                    case 6: newGenre = "Simulation"; break;
+                    case 7: newGenre = "Puzzle"; break;
+                    case 8: newGenre = "Racing"; break;
+                    case 9: newGenre = "Sports"; break;
+                    case 10: newGenre = "Fighting"; break;
+                    case 11: newGenre = "Horror"; break;
+                    case 12: newGenre = "Sandbox"; break;
+                    case 13: newGenre = "Platformer"; break;
+                    case 14: newGenre = "Stealth"; break;
+                    case 15: newGenre = "Survival"; break;
+                    case 16: newGenre = "Open world"; break;
+                    case 17: newGenre = "Massively multiplayer online (MMO)"; break;
+                    case 18: newGenre = "Educational"; break;
+                    case 19: newGenre = "Music/rhythm"; break;
+                    case 20: newGenre = "Party/mini-games"; break;
+                    case 21: newGenre = "Other"; break;
+                    default:
+                        throw invalid_argument("Invalid input for game genre!");
                 }
 
                 (*it)->setGenre(newGenre); // Use setter function
                 cout << "Genre updated successfully!\n" << endl;
-                saveLibraryToFile(gamesLibrary);
                 break;
             }
             case 2: {
@@ -351,7 +375,7 @@ void editGameEntry(vector<Game*>& gamesLibrary) {
     }
 }
 
-// Function to remove a game from the library
+// Function to remove a game from the users library
 void removeGame(vector<Game*>& gamesLibrary) {
     if (gamesLibrary.empty()) {
         cout << "Your game library is currently empty. There are no games to remove." << endl;
