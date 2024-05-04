@@ -15,6 +15,7 @@ Anyway, enjoy!
 How to use:
 
 Download and run the C++GameLibrary.exe
+
 You must input integers to use the corresponding/following options.
 1. View Game Libary
 2. Add a game
