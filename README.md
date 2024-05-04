@@ -11,7 +11,9 @@ It's intended to be used essentially as a ledger for games users have collected 
 and it helps to show how some games have changed in size since their inception.
 Anyway, enjoy!
 
+
 How to use:
+Download and run the C++GameLibrary.exe
 You must input integers to use the corresponding/following options.
 1. View Game Libary
 2. Add a game
